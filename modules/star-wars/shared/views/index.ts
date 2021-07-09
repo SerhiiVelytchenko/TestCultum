@@ -9,7 +9,7 @@ export const Wrapper = styled.div`
   display: flex;
   align-items: center;
   padding: 10px;
-  @media (max-width: 620px) {
+  @media screen and (${({ theme }) => theme.medias.phone}) {
     flex-direction: column;
   }
 `;
@@ -31,7 +31,7 @@ export const DetailsContainer = styled.div`
   flex-direction: column;
   width: 300px;
   margin-left: 75px;
-  @media (max-width: 700px) {
+  @media screen and (${({ theme }) => theme.medias.tablet}) {
     margin-left: 0px;
   }
 `;
