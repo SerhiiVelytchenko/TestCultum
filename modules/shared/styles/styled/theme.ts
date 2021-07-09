@@ -41,8 +41,14 @@ export const dimensions = {
   pageMaxWidth: 1071
 };
 
+export const medias = {
+  phone: 'max-width: 480px',
+  tablet: 'max-width: 768px'
+};
+
 export const theme: DefaultTheme = {
   colors,
   templates,
-  dimensions
+  dimensions,
+  medias
 };
