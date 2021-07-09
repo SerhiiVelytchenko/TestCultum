@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { VehiclePresentation } from '@md-sw-vehicle/layers/presentation';
 import { VehicleAPIContextProvider } from '@md-sw-vehicle/layers/api/vehicle';
 import { VehicleBLContextProvider } from '@md-sw-vehicle/layers/business';

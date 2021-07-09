@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 // view components
 import { Card } from '@md-sw/shared/components/card';
 import { ContentLoader } from '@md-ui/loaders/content-loader';

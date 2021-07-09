@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 // context
 import { VehiclesAPIContext } from '@md-sw-vehicles/layers/api/vehicles';
 // types

@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 // libs
 import { useRouter } from 'next/router';
 // utils
@@ -26,7 +26,6 @@ const VehicleAPIContext = React.createContext<Context>({
 
 const VehicleAPIContextProvider: React.FC = ({ children }) => {
   const { query } = useRouter();
-
   const { data, loading, error, refetch } = useQuery<GetVehicleResponse, GetVehicleVariables>(GET_VEHICLE_QUERY, {
     variables: { id: query.id as string },
     skip: !query.id
@@ -35,7 +34,6 @@ const VehicleAPIContextProvider: React.FC = ({ children }) => {
   const refetchVehicle = async (variables?: Partial<GetVehicleVariables>) => {
     try {
       const result = await refetch(variables);
-
       return result.data?.vehicle;
     } catch (error) {
       return U.errors.parseAndCreateClientError(error);

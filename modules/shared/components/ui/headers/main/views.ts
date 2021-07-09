@@ -6,7 +6,6 @@ export const Wrapper = styled.div`
   left: 0;
   right: 0;
   z-index: 100;
-
   background-color: ${({ theme }) => theme.colors.gray500};
   border-bottom: 1px solid ${({ theme }) => theme.colors.gray600};
 `;
@@ -21,7 +20,6 @@ export const IWrapper = styled.div`
 
 export const LWrapper = styled.div`
   flex: 1;
-
   img {
     display: block;
     max-height: 20px;
@@ -34,7 +32,6 @@ export const RWrapper = styled.div`
   flex: 2;
   justify-content: flex-end;
   color: white;
-
   ${({ theme }) => theme.templates.centerItems};
 `;
 

@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 // libs
 import { useQuery } from '@apollo/client';
 // utils
