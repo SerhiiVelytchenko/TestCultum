@@ -17,7 +17,19 @@ function createApolloClient(token?: string) {
         ...(Boolean(token) && { [AUTH_TOKEN_FIELD]: token })
       }
     }),
-    cache: new InMemoryCache({})
+    cache: new InMemoryCache({
+      typePolicies: {
+        Root: {
+          fields: {
+            starships: {
+              merge(existing, incoming) {
+                return { ...existing, ...incoming };
+              }
+            }
+          }
+        }
+      }
+    })
   });
 }
 

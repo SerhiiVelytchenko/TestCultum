@@ -1,8 +1,11 @@
 import { gql } from '@apollo/client';
 
 export const GET_STARSHIPS_QUERY = gql`
-  query GetStarships($after: String, $first: Int, $before: String, $last: Int) {
-    allStarships(after: $after, first: $first, before: $before, last: $last) {
+  query AllStarships($after: String) {
+    allStarships(first: 5, after: $after) {
+      pageInfo {
+        endCursor
+      }
       totalCount
       starships {
         id

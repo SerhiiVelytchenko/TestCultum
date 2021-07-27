@@ -1,21 +1,25 @@
 import { DefaultTheme, css } from 'styled-components';
 
 export const colors = {
-  // yellow
-  yellow400: '#e3ce0e',
   // blue
   blue400: '#0070f3',
   // green
-  green200: '#87cc43',
   green300: '#2ab736',
+  green200: '#87cc43',
   // gray
+  gray300: '#C5D0E6',
   gray400: '#272d3d',
   gray500: '#21293d',
   gray600: '#191e2d',
   // red
-  red500: '#ff294b',
+  red200: '#FFCBDB',
+  red300: '#B03F35',
+  red400: '#AB274F',
   // other
-  white: '#fff'
+  white: '#fff',
+  black: '#000',
+  // undefined
+  undefined: undefined
 };
 
 export const templates = {
@@ -38,7 +42,8 @@ export const templates = {
 };
 
 export const dimensions = {
-  pageMaxWidth: 1071
+  pageMaxWidth: 1071,
+  pageMinWidth: 320
 };
 
 export const medias = {

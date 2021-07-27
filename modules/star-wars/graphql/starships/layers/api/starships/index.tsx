@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 // utils
 import * as U from '@md-utils';
 // libs
@@ -14,35 +14,60 @@ interface Context {
   error?: ClientError<string>;
   isLoading: boolean;
   refetch: (variables?: GetStarshipsVariables) => Promise<ClientError<string> | Starships>;
+  addNewPositions: () => void;
+  totalCount: number;
 }
 
 const StarshipsAPIContext = React.createContext<Context>({
   starships: [],
   isLoading: false,
   error: undefined,
-  refetch: () => Promise.resolve([] as Starships)
+  refetch: () => Promise.resolve([] as Starships),
+  addNewPositions: () => {},
+  totalCount: 0
 });
 
 const StarshipsAPIContextProvider: React.FC = ({ children }) => {
-  const { data, loading, refetch, error } = useQuery<GetStarshipsResponse, GetStarshipsVariables>(GET_STARSHIPS_QUERY, {
-    variables: { first: 5 }
-  });
+  const { data, loading, refetch, fetchMore, error } = useQuery<GetStarshipsResponse, GetStarshipsVariables>(
+    GET_STARSHIPS_QUERY,
+    {
+      variables: { after: '' }
+    }
+  );
 
   const refetchStarships = async (variables?: GetStarshipsVariables) => {
     try {
       const result = await refetch(variables);
-
       return result.data ? result.data.allStarships.starships : [];
     } catch (error) {
       return U.errors.parseAndCreateClientError(error);
     }
   };
 
+  const addNewPositions = () => {
+    const endCursor = data?.allStarships.pageInfo.endCursor;
+
+    fetchMore({
+      variables: {
+        after: endCursor
+      },
+      updateQuery: (prevResult, { fetchMoreResult = prevResult }) => {
+        fetchMoreResult.allStarships.starships = [
+          ...prevResult.allStarships.starships,
+          ...fetchMoreResult.allStarships.starships
+        ];
+        return fetchMoreResult;
+      }
+    });
+  };
+
   const value = {
     starships: data ? data.allStarships.starships : [],
     error: error ? U.errors.parseAndCreateClientError(error) : undefined,
     isLoading: loading,
-    refetch: refetchStarships
+    refetch: refetchStarships,
+    addNewPositions,
+    totalCount: data?.allStarships.totalCount || 0
   };
 
   return <StarshipsAPIContext.Provider value={value}>{children}</StarshipsAPIContext.Provider>;

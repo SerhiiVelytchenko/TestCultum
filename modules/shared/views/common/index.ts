@@ -11,3 +11,10 @@ export const ContentWrapper = styled.div`
   margin: 0 auto;
   max-width: ${({ theme }) => theme.dimensions.pageMaxWidth}px;
 `;
+
+export const ContentItemsWrapper = styled.div`
+  height: 680px;
+  overflow: auto;
+  margin: 0;
+  max-width: ${({ theme }) => theme.dimensions.pageMaxWidth}px;
+`;

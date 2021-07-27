@@ -1,11 +1,11 @@
 import * as React from 'react';
 // view components
 import { MainLayout } from '@md-shared/layouts/main';
-import { FormExample } from '@md-modules/form-example';
+import { FormPage } from '@md-modules/form';
 
 const FormExamplePage = () => (
   <MainLayout>
-    <FormExample />
+    <FormPage />
   </MainLayout>
 );
 
